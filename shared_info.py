@@ -1,8 +1,5 @@
 # The DES algorithm used is from the pycryptodome package.
 from Crypto.Cipher import DES
-from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_v1_5
-from Crypto.Signature import pkcs1_15
 import random
 import string
 import base64
@@ -23,8 +20,6 @@ class SharedInfo:
 
     ID_CA = "ID-CA"
     ID_Server = "ID-Server"
-
-    Lifetime_sess = '86400'
 
     DEFAULT_KEY = b'default_'
 
@@ -97,7 +92,7 @@ class SharedInfo:
             -The DES algorithm is the one given by pycryptodome.
             -ECB mode is used.
             -Decodes base64 then uses decrypt function of the DES object.
-            -Argument can be either bytes or string.
+            -Argument is in bytes.
             -Returned plain_text is a string.
         """
         cipher_text = base64.b64decode(cipher_text)
